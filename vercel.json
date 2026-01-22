@@ -2,25 +2,22 @@
     "version": 2,
     "builds": [
         {
-            "src": "server/index.js",
+            "src": "python-era/backend/index.js",
             "use": "@vercel/node"
         },
         {
-            "src": "client/package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "build"
-            }
+            "src": "python-era/frontend/package.json",
+            "use": "@vercel/next"
         }
     ],
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/server/index.js"
+            "dest": "/python-era/backend/index.js"
         },
         {
             "src": "/(.*)",
-            "dest": "/client/$1",
+            "dest": "/python-era/frontend/$1",
             "headers": {
                 "cache-control": "s-maxage=0"
             }
@@ -30,7 +27,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "/client/index.html"
+            "dest": "/python-era/frontend/index.html"
         }
     ]
 }
